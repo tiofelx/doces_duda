@@ -46,7 +46,7 @@ export default function AboutContact() {
               whileInView={{ opacity: 1, scale: 1, rotate: 6 }}
               viewport={{ once: true }}
               transition={{ delay: 0.4, duration: 1, ease: "backOut" }}
-              className="absolute bottom-10 -right-10 md:right-10 w-[200px] h-[250px] bg-white p-2 shadow-2xl z-20 transform hidden sm:block"
+              className="absolute -bottom-8 -right-4 sm:bottom-10 sm:-right-10 md:right-10 w-[140px] h-[180px] sm:w-[200px] sm:h-[250px] bg-white p-2 shadow-2xl z-20 transform"
             >
                <div className="w-full h-full bg-[#EAE4DF] border border-[#DCD3CD] flex items-center justify-center relative overflow-hidden">
                  <Image 

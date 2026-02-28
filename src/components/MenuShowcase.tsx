@@ -12,7 +12,7 @@ const products = [
     price: "A partir de R$ 35",
     imagePlaceholder: "🍰 Clássico", 
     color: "bg-[#FDF6F5]",
-    className: "md:col-span-1 md:row-span-1 aspect-square sm:aspect-auto h-full",
+    className: "md:col-span-1 md:row-span-1 h-full",
   },
   {
     id: 2,
@@ -21,7 +21,7 @@ const products = [
     price: "A partir de R$ 15",
     imagePlaceholder: "🤤 Geladinhos",
     color: "bg-[#F4E3E2]",
-    className: "md:col-span-1 md:row-span-1 aspect-square sm:aspect-auto h-full",
+    className: "md:col-span-1 md:row-span-1 h-full",
   },
 ];
 
@@ -37,7 +37,7 @@ export default function MenuShowcase() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.8, ease: "easeOut" }}
-          className="flex flex-col md:flex-row justify-between items-end mb-16 gap-6"
+          className="flex flex-col md:flex-row justify-between items-start md:items-end mb-12 md:mb-16 gap-6"
         >
           <div className="max-w-xl">
             <h2 className="text-4xl md:text-5xl font-serif text-[var(--foreground)] mb-4">
@@ -66,7 +66,7 @@ export default function MenuShowcase() {
               transition: { staggerChildren: 0.2 }
             }
           }}
-          className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 auto-rows-[minmax(400px,auto)]"
+          className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 auto-rows-[minmax(350px,auto)] md:auto-rows-[minmax(400px,auto)]"
         >
           {products.map((item) => (
             <motion.div 
@@ -89,7 +89,7 @@ export default function MenuShowcase() {
               </div>
 
               <div className="p-8 pb-10 flex flex-col gap-3">
-                <div className="flex justify-between items-start gap-4">
+                <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 sm:gap-4">
                   <h3 className="text-2xl font-serif text-[var(--foreground)]">{item.name}</h3>
                   <span className="text-sm font-medium text-[var(--accent)] whitespace-nowrap bg-[#FDF9F7] px-3 py-1 rounded-full">{item.price}</span>
                 </div>
