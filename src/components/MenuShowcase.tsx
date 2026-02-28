@@ -11,7 +11,7 @@ const products = [
     description: "Nossos clássicos com sabor de fazenda e afeto. Massas fofinhas e super saborosas, perfeitos para acompanhar o café da tarde em família.",
     price: "A partir de R$ 35",
     imagePlaceholder: "🍰 Clássico", 
-    color: "bg-[#FDF6F5]",
+    color: "bg-[var(--accent-light)]/20",
     className: "md:col-span-1 md:row-span-1 h-full",
   },
   {
@@ -20,14 +20,14 @@ const products = [
     description: "Nossas opções geladas e irresistíveis para adoçar ainda mais os seus momentos, feitas com ingredientes selecionados.",
     price: "A partir de R$ 15",
     imagePlaceholder: "🤤 Geladinhos",
-    color: "bg-[#F4E3E2]",
+    color: "bg-[var(--accent)]/20",
     className: "md:col-span-1 md:row-span-1 h-full",
   },
 ];
 
 export default function MenuShowcase() {
   return (
-    <section id="menu" className="py-24 px-6 bg-white relative">
+    <section id="menu" className="py-24 px-6 bg-[var(--surface)] relative">
       {/* Delicate background accent */}
       <div className="absolute top-20 right-0 w-[40vw] h-[60vw] max-w-lg bg-[var(--accent-light)] opacity-20 rounded-l-full blur-3xl z-0 pointer-events-none" />
 
@@ -43,7 +43,7 @@ export default function MenuShowcase() {
             <h2 className="text-4xl md:text-5xl font-serif text-[var(--foreground)] mb-4">
               Assinatura<br/><span className="italic text-[var(--accent)]">Duda Doces</span>
             </h2>
-            <p className="text-[#7A6B62] font-sans leading-relaxed">
+            <p className="text-[var(--foreground)]/80 font-sans leading-relaxed">
               Cada doce é uma obra de arte pensada para encantar os olhos e o paladar. 
               Trabalhamos de forma artesanal para entregar os melhores sabores da nossa família para a sua.
             </p>
@@ -75,7 +75,7 @@ export default function MenuShowcase() {
                 hidden: { opacity: 0, y: 30 },
                 visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } }
               }}
-              className={`group flex flex-col overflow-hidden rounded-[2rem] border border-[#F5F0EE] shadow-md hover:shadow-2xl hover:shadow-[#F0D3D3]/50 transition-shadow duration-500 bg-white ${item.className}`}
+              className={`group flex flex-col overflow-hidden rounded-[2rem] border border-[var(--accent-light)]/20 shadow-md hover:shadow-2xl hover:shadow-[var(--accent-light)]/40 transition-shadow duration-500 bg-[var(--background)] ${item.className}`}
             >
               <div className={`relative w-full flex-grow min-h-[250px] md:min-h-0 flex items-center justify-center overflow-hidden ${item.color}`}>
                  <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-black/5 to-transparent mix-blend-multiply" />
@@ -91,9 +91,9 @@ export default function MenuShowcase() {
               <div className="p-8 pb-10 flex flex-col gap-3">
                 <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2 sm:gap-4">
                   <h3 className="text-2xl font-serif text-[var(--foreground)]">{item.name}</h3>
-                  <span className="text-sm font-medium text-[var(--accent)] whitespace-nowrap bg-[#FDF9F7] px-3 py-1 rounded-full">{item.price}</span>
+                  <span className="text-sm font-medium text-[var(--foreground)] whitespace-nowrap bg-[var(--accent-light)]/40 px-3 py-1 rounded-full">{item.price}</span>
                 </div>
-                <p className="text-[#7A6B62] text-sm leading-relaxed">{item.description}</p>
+                <p className="text-[var(--foreground)]/80 text-sm leading-relaxed">{item.description}</p>
               </div>
             </motion.div>
           ))}

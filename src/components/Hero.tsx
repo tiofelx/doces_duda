@@ -36,7 +36,7 @@ export default function Hero() {
         initial={{ opacity: 0, scale: 0.8 }}
         animate={{ opacity: 0.4, scale: 1 }}
         transition={{ duration: 2, ease: "easeOut", delay: 0.5 }}
-        className="absolute bottom-[-10%] right-[-10%] w-[60vw] h-[60vw] bg-[#F4E3E2] organic-shape blur-3xl z-0 pointer-events-none" 
+        className="absolute bottom-[-10%] right-[-10%] w-[60vw] h-[60vw] bg-[var(--accent-light)] organic-shape blur-3xl z-0 pointer-events-none" 
         style={{ animationDelay: '-4s' }} 
       />
 
@@ -55,7 +55,7 @@ export default function Hero() {
           <motion.h1 variants={itemVariants} className="text-5xl md:text-6xl lg:text-7xl font-serif text-[var(--foreground)] leading-[1.1] mb-6">
             Doces finos feitos<br className="hidden md:inline" /> com delicadeza
           </motion.h1>
-          <motion.p variants={itemVariants} className="text-lg text-[#7A6B62] font-sans max-w-md mb-8 leading-relaxed">
+          <motion.p variants={itemVariants} className="text-lg text-[var(--foreground)]/80 font-sans max-w-md mb-8 leading-relaxed">
             Especializada em bolos elegantes e doces artesanais que transformam momentos simples em memórias inesquecíveis.
           </motion.p>
           
@@ -91,7 +91,7 @@ export default function Hero() {
         <motion.div variants={itemVariants} className="flex-1 w-full max-w-md md:max-w-none flex justify-center mt-10 md:mt-0">
           <div className="relative w-[300px] h-[400px] md:w-[380px] md:h-[500px]">
              {/* Instead of a placeholder block, we use CSS for a highly aesthetic presentation */}
-            <div className="absolute inset-0 organic-shape bg-gradient-to-tr from-[var(--accent-light)] to-[#FFEBEA] shadow-[0_20px_60px_-15px_rgba(252,192,197,0.4)] overflow-hidden flex items-center justify-center p-2">
+            <div className="absolute inset-0 organic-shape bg-gradient-to-tr from-[var(--accent-light)] to-[var(--accent-light)]/40 shadow-[0_20px_60px_-15px_rgba(252,192,197,0.4)] overflow-hidden flex items-center justify-center p-2">
                <div className="w-full h-full organic-shape overflow-hidden bg-[var(--surface)] relative border-4 border-white">
                   <Image 
                     src="/images/menu/bolo_milho_requeijao.png"
@@ -109,14 +109,14 @@ export default function Hero() {
               initial={{ opacity: 0, y: 20, rotate: -5 }}
               animate={{ opacity: 1, y: 0, rotate: 0 }}
               transition={{ delay: 1.2, duration: 0.8, ease: "easeOut" }}
-              className="absolute -bottom-6 -left-6 bg-white p-4 rounded-2xl shadow-xl shadow-[#F0EBE9] border border-[#F5F0EE] flex items-center gap-4 z-20"
+              className="absolute -bottom-6 -left-6 bg-white p-4 rounded-2xl shadow-xl shadow-[var(--accent-light)]/30 border border-[var(--accent-light)]/30 flex items-center gap-4 z-20"
             >
               <div className="w-12 h-12 rounded-full bg-[var(--accent-light)] flex items-center justify-center text-xl">
                 ✨
               </div>
               <div>
                 <p className="font-serif font-bold text-[var(--foreground)]">Feito à mão</p>
-                <p className="text-xs text-[#7A6B62]">Com ingredientes premium</p>
+                <p className="text-xs text-[var(--foreground)]/80">Com ingredientes premium</p>
               </div>
             </motion.div>
           </div>
