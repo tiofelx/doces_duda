@@ -1,0 +1,54 @@
+@import "tailwindcss";
+
+@theme {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-accent: var(--accent);
+  --color-accent-light: var(--accent-light);
+  --color-surface: var(--surface);
+
+  --font-serif: var(--font-cormorant);
+  --font-sans: var(--font-outfit);
+}
+
+:root {
+  --background: #f6f3ee; /* Light Cream */
+  --foreground: #ad795b; /* Cocoa/Brown */
+  --accent: #e9bc8b; /* Caramel/Sand */
+  --accent-light: #fcc0c5; /* Pink/Rose */
+  --surface: #ffffff;
+}
+
+/* Enforce light mode aesthetic for the delicate brand identity */
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-serif);
+  font-weight: 500;
+  letter-spacing: -0.02em;
+}
+
+/* Utilities for the fluid organic shapes */
+.organic-shape {
+  border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
+  animation: organic-morph 8s ease-in-out infinite alternate;
+}
+
+@keyframes organic-morph {
+  0% {
+    border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
+  }
+  100% {
+    border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+  }
+}
