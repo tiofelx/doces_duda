@@ -4,12 +4,12 @@ import { ArrowLeft } from "lucide-react";
 
 export default function CardapioPage() {
   return (
-    <main className="min-h-screen bg-[var(--background)] flex flex-col">
+    <main className="min-h-screen flex flex-col">
       {/* Subtle Header */}
-      <header className="py-6 px-6 sm:px-12 flex justify-between items-center border-b border-[#F5F0EE] bg-white sticky top-0 z-50">
+      <header className="py-6 px-6 sm:px-12 flex justify-between items-center border-b border-[var(--foreground)]/10 bg-[var(--background)]/80 backdrop-blur-md sticky top-0 z-50">
         <Link 
           href="/" 
-          className="flex items-center gap-2 text-[#A69B95] hover:text-[var(--foreground)] transition-colors text-sm font-medium"
+          className="flex items-center gap-2 text-[var(--muted)] hover:text-[var(--foreground)] transition-colors text-sm font-medium"
         >
           <ArrowLeft className="w-4 h-4" />
           Voltar para Home
@@ -24,8 +24,8 @@ export default function CardapioPage() {
         <FullMenu />
       </div>
 
-      <footer className="py-8 text-center text-[#A69B95] text-sm bg-white border-t border-[#F5F0EE] mt-auto">
-        <p>© {new Date().getFullYear()} Bolos da Maria — Confeitaria Artesanal.</p>
+      <footer className="py-8 text-center text-[var(--foreground)] text-sm mt-auto">
+        <p>© {new Date().getFullYear()} Bolos da Maria</p>
       </footer>
     </main>
   );

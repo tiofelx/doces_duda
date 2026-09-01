@@ -3,6 +3,8 @@
 @theme {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
+  --color-brand: var(--brand);
   --color-accent: var(--accent);
   --color-accent-light: var(--accent-light);
   --color-surface: var(--surface);
@@ -12,30 +14,48 @@
 }
 
 :root {
-  --background: #f6f3ee; /* Light Cream */
-  --foreground: #ad795b; /* Cocoa/Brown */
-  --accent: #e9bc8b; /* Caramel/Sand */
-  --accent-light: #fcc0c5; /* Pink/Rose */
+  --background: #f6f3ee; /* creme */
+  --foreground: #4a3226; /* texto principal — cacau escuro, ~9:1 no rosa */
+  --muted: #6f5748; /* texto secundário — descrições, rodapé */
+  --brand: #a06d4e; /* marrom da marca: destaque e hover — 3,3:1 no rosa, passa em texto grande */
+  --accent: #e9bc8b; /* caramelo */
+  --accent-light: #fcc0c5; /* rosa */
   --surface: #ffffff;
 }
 
-/* Enforce light mode aesthetic for the delicate brand identity */
+/* Fundo único da página: um degradê só, do creme no topo ao rosa embaixo.
+   Antes cada seção pintava o próprio fundo, e as emendas apareciam. */
 body {
+  min-height: 100vh;
   background-color: var(--background);
+  background-image: linear-gradient(
+    180deg,
+    var(--background) 0%,
+    var(--background) 30%,
+    color-mix(in srgb, var(--accent-light) 35%, var(--background)) 72%,
+    color-mix(in srgb, var(--accent-light) 55%, var(--background)) 100%
+  );
+  background-repeat: no-repeat;
   color: var(--foreground);
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
 }
 
+/* Cormorant é serifada de display: encorpa bem em título grande e fica
+   trêmula em texto pequeno. Por isso só h1/h2; o resto vai na Outfit. */
 h1,
-h2,
+h2 {
+  font-family: var(--font-serif);
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
 h3,
 h4,
 h5,
 h6 {
-  font-family: var(--font-serif);
+  font-family: var(--font-sans);
   font-weight: 500;
-  letter-spacing: -0.02em;
 }
 
 /* Utilities for the fluid organic shapes */
@@ -50,5 +70,16 @@ h6 {
   }
   100% {
     border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+  }
+}
+
+/* Cardápio com número ímpar de itens: o último fica sozinho na última linha e
+   o grid o encosta à esquerda. Centraliza ele mantendo a largura de 1 coluna.
+   Só no desktop — no mobile a grade já é de uma coluna só. */
+@media (min-width: 768px) {
+  .menu-grid > :last-child:nth-child(odd) {
+    grid-column: 1 / -1;
+    justify-self: center;
+    width: calc(50% - 0.75rem); /* metade menos metade do gap-6 (1.5rem) */
   }
 }

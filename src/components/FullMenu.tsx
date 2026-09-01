@@ -20,34 +20,32 @@ type MenuItem = {
 type Category = {
   id: string;
   label: string;
+  /** Rotulo curto para a aba no mobile, onde os tres nomes cheios nao cabem. */
+  short?: string;
   items: MenuItem[];
 };
 
-// --- Data ---
-
-// TODO(maria): preços ainda não definidos — trocar "Sob consulta" pelo valor
-// e preencher numericPrice para o carrinho somar o total.
 const menuData: Category[] = [
   {
     id: "bolos-caseiros",
     label: "Bolos Caseiros",
+    short: "Caseiros",
     items: [
-      { id: "bc1", name: "Bolo de Banana Caramelizada", description: "Massa fofinha com rodelas de banana caramelizada por cima. Sabor de casa de vó.", price: "Sob consulta", image: "/images/menu/bolo_banana.jpg" },
-      { id: "bc2", name: "Bolo de Coco", description: "Molhadinho, coberto com coco ralado fresco. Perfeito para o café da tarde.", price: "Sob consulta", image: "/images/menu/bolo_coco_ralado.jpg" },
-      { id: "bc3", name: "Bolo de Coco Molhadinho", description: "Versão bem úmida, com calda que encharca a massa e coco por cima.", price: "Sob consulta", image: "/images/menu/bolo_coco_2.jpg" },
-      { id: "bc4", name: "Bolo de Laranja", description: "Perfumado, com fatias de laranja caramelizadas na cobertura.", price: "Sob consulta", image: "/images/menu/bolo_laranja.jpg" },
-      { id: "bc5", name: "Bolo Simples", description: "O clássico dourado, sem cobertura, do jeitinho que combina com café.", price: "Sob consulta", image: "/images/menu/bolo_simples.jpg" },
+      { id: "bc1", name: "Bolo de Banana", description: "Massa fofinha com rodelas de banana caramelizada por cima.", price: "Sob consulta", image: "/images/menu/bolo_banana.jpg" },
+      { id: "bc3", name: "Bolo de Coco", description: "Molhadinho, com calda que encharca a massa e coco ralado por cima.", price: "Sob consulta", image: "/images/menu/bolo_coco_2.jpg" },
+      { id: "bc4", name: "Bolo de Maçã", description: "Macio e perfumado, com fatias de maçã caramelizadas por cima.", price: "Sob consulta", image: "/images/menu/bolo_maca.jpg" },
+      { id: "bc5", name: "Bolo de Laranja", description: "Perfumado, dourado e sem cobertura, do jeitinho que combina com café.", price: "Sob consulta", image: "/images/menu/bolo_laranja_liso.jpg" },
       { id: "bc6", name: "Bolo de Cenoura com Chocolate", description: "Massa de cenoura macia com cobertura de chocolate e granulado.", price: "Sob consulta", image: "/images/menu/bolo_cenoura.jpg" },
     ]
   },
   {
     id: "bolos-chocolate",
     label: "Bolos de Chocolate",
+    short: "Chocolate",
     items: [
-      { id: "ch1", name: "Bolo de Chocolate com Granulado", description: "Cobertura cremosa de chocolate com granulado por cima. Sucesso garantido.", price: "Sob consulta", image: "/images/menu/bolo_chocolate_granulado.jpg" },
+      { id: "ch1", name: "Bolo de Chocolate com Granulado", description: "Cobertura cremosa de chocolate com granulado por cima.", price: "Sob consulta", image: "/images/menu/bolo_chocolate_granulado.jpg" },
       { id: "ch2", name: "Bolo de Chocolate com Gotas", description: "Ganache brilhante finalizada com gotas de chocolate ao leite.", price: "Sob consulta", image: "/images/menu/bolo_chocolate_gotas.jpg" },
-      { id: "ch3", name: "Bolo de Chocolate Recheado", description: "Massa de chocolate com recheio cremoso, calda e coco ralado.", price: "Sob consulta", image: "/images/menu/bolo_chocolate_recheado.jpg" },
-      { id: "ch4", name: "Bolo com Glacê e Gotas", description: "Glacê branco escorrendo pela lateral, coberto de gotas de chocolate.", price: "Sob consulta", image: "/images/menu/bolo_glace_gotas.jpg" },
+      { id: "ch3", name: "Bolo de Prestígio", description: "Massa de chocolate com recheio de coco, calda e coco ralado por cima.", price: "Sob consulta", image: "/images/menu/bolo_prestigio.jpg" },
       { id: "ch5", name: "Bolo de Brigadeiro", description: "Alto, com brigadeiro cremoso e uma camada generosa de granulado.", price: "Sob consulta", image: "/images/menu/bolo_brigadeiro.jpg" },
     ]
   },
@@ -55,9 +53,9 @@ const menuData: Category[] = [
     id: "sobremesas",
     label: "Sobremesas",
     items: [
-      { id: "sb1", name: "Torta de Morango", description: "Camada farta de brigadeiro coberta de granulado e morangos frescos.", price: "Sob consulta", image: "/images/menu/torta_morango.jpg" },
-      { id: "sb2", name: "Pavê de Uva", description: "Creme de chocolate gelado com uvas verdes. Leve e refrescante.", price: "Sob consulta", image: "/images/menu/pave_uva.jpg" },
-      { id: "sb3", name: "Pudim de Leite", description: "Pudim clássico, cremoso, com calda de caramelo caseira.", price: "Sob consulta", image: "/images/menu/pudim.jpg" },
+      { id: "sb1", name: "Bombom de Morango", description: "Morangos frescos no creme, cobertos de brigadeiro e granulado.", price: "Sob consulta", image: "/images/menu/bombom_morango.jpg" },
+      { id: "sb2", name: "Bombom de Uva", description: "Uvas verdes no creme gelado, cobertas com chocolate. Leve e refrescante.", price: "Sob consulta", image: "/images/menu/bombom_uva.jpg" },
+      { id: "sb3", name: "Pudim", description: "Pudim clássico, cremoso, com calda de caramelo caseira.", price: "Sob consulta", image: "/images/menu/pudim.jpg" },
     ]
   }
 ];
@@ -82,17 +80,17 @@ const MenuItemCard = ({
       initial={{ opacity: 0, scale: 0.95, y: 10 }}
       animate={{ opacity: 1, scale: 1, y: 0 }}
       transition={{ delay: index * 0.05, duration: 0.4, ease: "easeOut" }}
-      className="group flex flex-col p-5 bg-white rounded-3xl border border-transparent hover:border-[#F5F0EE] shadow-[0_4px_20px_-4px_rgba(0,0,0,0.02)] hover:shadow-xl hover:shadow-[#FCC0C5]/10 transition-all duration-500"
+      className="group flex flex-col p-4 bg-white rounded-3xl border border-transparent hover:border-[#F5F0EE] shadow-[0_4px_20px_-4px_rgba(0,0,0,0.02)] hover:shadow-xl hover:shadow-[#FCC0C5]/10 transition-all duration-500"
     >
       <div className="flex gap-4 h-full">
         {/* Aesthetic Image or Placeholder */}
-        <div className="shrink-0 w-24 h-24 sm:w-28 sm:h-28 rounded-2xl bg-gradient-to-br from-[#FDF9F7] to-[#F5E6E8] flex items-center justify-center text-[var(--accent)] relative overflow-hidden">
+        <div className="shrink-0 w-28 sm:w-32 self-stretch min-h-[7rem] rounded-2xl bg-gradient-to-br from-[#FDF9F7] to-[#F5E6E8] flex items-center justify-center text-[var(--accent)] relative overflow-hidden">
           {item.image ? (
             <Image 
               src={item.image} 
               alt={`Foto de ${item.name}`} 
               fill 
-              sizes="(max-width: 640px) 96px, 112px"
+              sizes="(max-width: 640px) 112px, 128px"
               className="object-cover transition-transform duration-700 group-hover:scale-110"
             />
           ) : (
@@ -111,11 +109,11 @@ const MenuItemCard = ({
         {/* Content */}
         <div className="flex-1 flex flex-col pt-1">
           <div className="flex justify-between items-start gap-2 mb-1.5">
-            <h3 className="text-lg sm:text-xl font-serif text-[var(--foreground)] leading-tight tracking-tight">
+            <h3 className="text-lg sm:text-xl font-medium text-[var(--foreground)] leading-tight">
               {item.name}
             </h3>
           </div>
-          <p className="text-xs sm:text-sm text-[#8A7B72] leading-relaxed line-clamp-2 md:line-clamp-3 mb-4 font-light">
+          <p className="text-xs sm:text-sm text-[var(--muted)] leading-relaxed line-clamp-2 md:line-clamp-3 mb-3 font-light">
             {item.description}
           </p>
           
@@ -137,7 +135,7 @@ const MenuItemCard = ({
                     <motion.button 
                       whileTap={{ scale: 0.9 }}
                       onClick={() => onRemove(item.id)}
-                      className="w-7 h-7 rounded-full flex items-center justify-center text-[#7A6B62] hover:bg-white hover:text-[var(--foreground)] hover:shadow-sm transition-all duration-200"
+                      className="w-7 h-7 rounded-full flex items-center justify-center text-[var(--muted)] hover:bg-white hover:text-[var(--foreground)] hover:shadow-sm transition-all duration-200"
                     >
                       <Minus className="w-3.5 h-3.5" />
                     </motion.button>
@@ -152,7 +150,7 @@ const MenuItemCard = ({
                     <motion.button 
                       whileTap={{ scale: 0.9 }}
                       onClick={() => onAdd(item.id)}
-                      className="w-7 h-7 rounded-full flex items-center justify-center text-[#7A6B62] hover:bg-white hover:text-[var(--foreground)] hover:shadow-sm transition-all duration-200"
+                      className="w-7 h-7 rounded-full flex items-center justify-center text-[var(--muted)] hover:bg-white hover:text-[var(--foreground)] hover:shadow-sm transition-all duration-200"
                     >
                       <Plus className="w-3.5 h-3.5" />
                     </motion.button>
@@ -199,7 +197,6 @@ export default function FullMenu() {
     });
   };
 
-  // React Best Practice: useMemo for derived state to avoid unnecessary recalculations
   const cartInfo = useMemo(() => {
     let totalItems = 0;
     let totalPrice = 0;
@@ -221,65 +218,73 @@ export default function FullMenu() {
   const handleWhatsAppOrder = () => {
     // Enquanto não houver preço cadastrado o total fica zerado; não mandar "R$ 0".
     const valor = cartInfo.totalPrice > 0 ? `\n\nValor estimado: R$ ${cartInfo.totalPrice}` : "";
-    const message = `Olá! Gostaria de encomendar:\n\n${cartInfo.orderItems.map(item => `- ${item}`).join('\n')}${valor}\n\nPodemos confirmar a disponibilidade?`;
+    const message = `Oiii, Maria, gostaria de encomendar:\n\n${cartInfo.orderItems.map(item => `- ${item}`).join('\n')}${valor}\n`;
     window.open(`https://wa.me/${WHATSAPP}?text=${encodeURIComponent(message)}`, '_blank');
   };
 
   return (
-    <section id="cardapio" className="py-24 px-6 bg-[var(--background)] relative overflow-hidden flex-1">
-      {/* Soft organic background accents */}
-      <div className="absolute top-0 right-0 w-[50vw] h-[50vw] bg-[var(--accent-light)] opacity-20 blur-[100px] rounded-full pointer-events-none -translate-y-1/2 translate-x-1/2" />
-      <div className="absolute bottom-0 left-0 w-[40vw] h-[40vw] bg-[#E9BC8B] opacity-10 blur-[80px] rounded-full pointer-events-none translate-y-1/2 -translate-x-1/2" />
+    <section id="cardapio" className="py-16 sm:py-24 px-6 relative overflow-hidden flex-1">
 
       <div className="max-w-5xl mx-auto relative z-10">
         
         {/* Header */}
-        <div className="text-center mb-16">
+        <div className="text-center mb-10 sm:mb-16">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.5, ease: "easeOut" }}
+            className="relative mx-auto mb-6 w-44 h-44 sm:w-52 sm:h-52 md:w-56 md:h-56"
+          >
+            <Image
+              src="/images/logo.jpg"
+              alt="Bolos da Maria — bolos e doces feitos com amor"
+              fill
+              sizes="(max-width: 640px) 176px, 224px"
+              priority
+              className="rounded-full object-cover"
+            />
+          </motion.div>
           <motion.h2 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="text-4xl md:text-5xl font-serif text-[var(--foreground)] mb-4 tracking-tight"
+            className="text-[var(--foreground)] text-2xl sm:text-3xl md:text-4xl leading-tight text-balance max-w-2xl mx-auto"
           >
-            Nosso Cardápio
+            Monte sua encomenda e me mande pelo{" "}
+            <span className="italic text-[var(--brand)]">WhatsApp!</span>
           </motion.h2>
-          <motion.p 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.1 }}
-            className="text-[#8A7B72] font-sans font-light"
-          >
-            Monte sua encomenda e envie diretamente para nosso WhatsApp.
-          </motion.p>
         </div>
 
         {/* Elegant Tabs */}
-        <div className="flex justify-center gap-2 mb-14 relative z-20">
-          <div className="flex bg-white/60 backdrop-blur-md p-1.5 rounded-full border border-white/80 shadow-sm">
-            {menuData.map((category) => (
-              <button
-                 key={category.id}
-                onClick={() => setActiveTab(category.id)}
-                className={`relative px-6 py-2.5 rounded-full text-sm font-medium transition-colors duration-300 z-10 ${
-                  activeTab === category.id 
-                    ? "text-[var(--foreground)]" 
-                    : "text-[#A69B95] hover:text-[var(--foreground)]"
-                }`}
-              >
-                {activeTab === category.id && (
-                  <motion.div
-                    layoutId="pill-tab"
-                    className="absolute inset-0 bg-white rounded-full -z-10 shadow-[0_2px_10px_rgba(0,0,0,0.04)] border border-[#F5F0EE]"
-                    transition={{ type: "spring", stiffness: 400, damping: 30 }}
-                  />
-                )}
-                {category.label}
-              </button>
-            ))}
+        <div className="mb-10 sm:mb-14 relative z-20 overflow-x-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+          <div className="flex justify-center min-w-max">
+            <div className="flex bg-white/60 backdrop-blur-md p-1.5 rounded-full border border-white/80 shadow-sm">
+              {menuData.map((category) => (
+                <button
+                   key={category.id}
+                  onClick={() => setActiveTab(category.id)}
+                  className={`relative whitespace-nowrap px-4 sm:px-6 py-2.5 rounded-full text-sm font-medium transition-colors duration-300 z-10 ${
+                    activeTab === category.id 
+                      ? "text-[var(--foreground)]" 
+                      : "text-[var(--muted)] hover:text-[var(--foreground)]"
+                  }`}
+                >
+                  {activeTab === category.id && (
+                    <motion.div
+                      layoutId="pill-tab"
+                      className="absolute inset-0 bg-white rounded-full -z-10 shadow-[0_2px_10px_rgba(0,0,0,0.04)] border border-[#F5F0EE]"
+                      transition={{ type: "spring", stiffness: 400, damping: 30 }}
+                    />
+                  )}
+                  <span className="sm:hidden">{category.short ?? category.label}</span>
+                  <span className="hidden sm:inline">{category.label}</span>
+                </button>
+              ))}
+            </div>
           </div>
         </div>
 
         {/* Menu Grid */}
-        <div className="min-h-[500px] mb-32">
+        <div className="min-h-[500px] mb-24 sm:mb-32">
           <AnimatePresence mode="wait">
             {activeCategory && (
               <motion.div
@@ -288,7 +293,7 @@ export default function FullMenu() {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -10 }}
                 transition={{ duration: 0.3 }}
-                className="grid grid-cols-1 md:grid-cols-2 gap-6"
+                className="menu-grid grid grid-cols-1 md:grid-cols-2 gap-6"
               >
                 {activeCategory.items.map((item, index) => (
                   <MenuItemCard 
@@ -325,8 +330,8 @@ export default function FullMenu() {
                     {cartInfo.totalItems}
                   </span>
                 </div>
-                <div className="font-serif font-bold text-lg text-[var(--foreground)] tracking-tight">
-                  <span className="text-sm font-sans font-normal text-[#8A7B72] mr-2">Total</span>
+                <div className="font-semibold text-lg text-[var(--foreground)] tracking-tight">
+                  <span className="text-sm font-sans font-normal text-[var(--muted)] mr-2">Total</span>
                   {cartInfo.totalPrice > 0 ? `R$ ${cartInfo.totalPrice}` : "A combinar"}
                 </div>
               </div>

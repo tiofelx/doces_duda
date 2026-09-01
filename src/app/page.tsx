@@ -1,17 +1,15 @@
-import Hero from "@/components/Hero";
-import MenuShowcase from "@/components/MenuShowcase";
+import FullMenu from "@/components/FullMenu";
 import AboutContact from "@/components/AboutContact";
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-[var(--background)]">
-      <Hero />
-      <MenuShowcase />
+    <main className="min-h-screen">
+      <FullMenu />
       <AboutContact />
-      
+
       {/* Delicate Footer */}
-      <footer className="py-8 text-center text-[#A69B95] text-sm bg-white border-t border-[#F5F0EE]">
-        <p>© {new Date().getFullYear()} Bolos da Maria — Confeitaria Artesanal.</p>
+      <footer className="py-8 text-center text-[var(--foreground)] text-sm">
+        <p>Bolos da Maria. © {new Date().getFullYear()}</p>
         <p className="mt-1">Feito com cuidado e amor.</p>
       </footer>
     </main>

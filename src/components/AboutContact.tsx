@@ -1,9 +1,9 @@
 "use client";
 
-import { Heart, MapPin, Instagram, Mail } from "lucide-react";
+import { Heart, MapPin, Instagram } from "lucide-react";
 import { motion, Variants } from "framer-motion";
 import Image from "next/image";
-import { MARCA, INSTAGRAM, WHATSAPP, EMAIL, CIDADE } from "@/lib/site";
+import { MARCA, INSTAGRAM, WHATSAPP, CIDADE } from "@/lib/site";
 
 export default function AboutContact() {
   const textVariants: Variants = {
@@ -12,9 +12,7 @@ export default function AboutContact() {
   };
 
   return (
-    <section id="sobre" className="py-24 px-6 relative overflow-hidden bg-[var(--background)]">
-      {/* Decorative leaf/flourish background shape */}
-      <div className="absolute top-1/2 left-[-10%] w-[30vw] h-[40vw] max-w-sm bg-[var(--accent)] opacity-20 rounded-full blur-2xl z-0 pointer-events-none transform -translate-y-1/2" />
+    <section id="sobre" className="py-24 px-6 relative overflow-hidden">
 
       <div className="max-w-6xl mx-auto relative z-10">
         <div className="flex flex-col lg:flex-row gap-16 lg:gap-24 items-center">
@@ -72,12 +70,11 @@ export default function AboutContact() {
             }}
             className="w-full lg:w-1/2 flex flex-col items-center lg:items-start text-center lg:text-left"
           >
-            <motion.div variants={textVariants} className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-[var(--accent-light)] text-[var(--foreground)] mb-6">
-              <Heart className="w-5 h-5" />
-            </motion.div>
-            
-            <motion.h2 variants={textVariants} className="text-4xl md:text-5xl font-serif text-[var(--foreground)] mb-6">
-              Olá, eu sou a <span className="italic text-[var(--accent)]">Maria</span>
+            <motion.h2 variants={textVariants} className="text-4xl md:text-5xl font-serif text-[var(--foreground)] mb-6 flex flex-wrap items-center justify-center lg:justify-start gap-x-4 gap-y-2">
+              <span>Olá, eu sou a <span className="italic text-[var(--brand)]">Maria</span></span>
+              <span className="inline-flex shrink-0 items-center justify-center w-12 h-12 rounded-full bg-[var(--accent-light)] text-[var(--foreground)]">
+                <Heart className="w-5 h-5" />
+              </span>
             </motion.h2>
             
             <motion.p variants={textVariants} className="text-lg text-[var(--foreground)]/80 font-sans leading-relaxed mb-6">
@@ -93,17 +90,17 @@ export default function AboutContact() {
             </motion.p>
 
             {/* Contact Info */}
-            <motion.div variants={textVariants} className="w-full bg-white p-8 rounded-3xl shadow-xl shadow-[var(--accent-light)]/20 border border-[var(--accent-light)]/40 flex flex-col gap-6 hover:shadow-2xl hover:shadow-[var(--accent-light)]/40 transition-shadow duration-500">
-              <h3 className="font-serif text-2xl text-[var(--foreground)] border-b border-[var(--accent-light)]/40 pb-4">
+            <motion.div variants={textVariants} className="w-full max-w-[360px] mx-auto bg-white p-6 rounded-3xl shadow-xl shadow-[var(--accent-light)]/20 border border-[var(--accent-light)]/40 flex flex-col gap-4 hover:shadow-2xl hover:shadow-[var(--accent-light)]/40 transition-shadow duration-500">
+              <h3 className="font-serif text-2xl text-center text-[var(--foreground)] border-b border-[var(--accent-light)]/40 pb-3">
                 Fale Comigo
               </h3>
               
-              <ul className="flex flex-col gap-4 text-left">
+              <ul className="flex flex-col gap-3 text-left">
                 <li className="flex items-center gap-4 text-[var(--foreground)]/80">
                   <div className="w-10 h-10 shrink-0 rounded-full bg-[var(--background)] flex items-center justify-center text-[var(--foreground)]">
                     <Instagram className="w-5 h-5" />
                   </div>
-                  <a href={`https://instagram.com/${INSTAGRAM}`} target="_blank" rel="noreferrer" className="hover:text-[var(--accent)] transition-colors">
+                  <a href={`https://instagram.com/${INSTAGRAM}`} target="_blank" rel="noreferrer" className="hover:text-[var(--brand)] transition-colors">
                     @{INSTAGRAM}
                   </a>
                 </li>
@@ -113,21 +110,13 @@ export default function AboutContact() {
                   </div>
                   <span>Ateliê em {CIDADE}<br/><span className="text-sm opacity-80">(Apenas Retiradas/Entregas)</span></span>
                 </li>
-                <li className="flex items-center gap-4 text-[var(--foreground)]/80">
-                  <div className="w-10 h-10 shrink-0 rounded-full bg-[var(--background)] flex items-center justify-center text-[var(--foreground)]">
-                    <Mail className="w-5 h-5" />
-                  </div>
-                  <a href={`mailto:${EMAIL}`} className="hover:text-[var(--accent)] transition-colors break-all">
-                    {EMAIL}
-                  </a>
-                </li>
               </ul>
 
               <a 
                 href={`https://wa.me/${WHATSAPP}`} 
                 target="_blank" 
                 rel="noreferrer"
-                className="mt-2 w-full flex items-center justify-center gap-2 bg-[#25D366] text-white px-8 py-4 rounded-xl font-medium hover:bg-[#20bd5a] transition-all duration-300 shadow-sm hover:scale-[1.02]"
+                className="w-full flex items-center justify-center gap-2 bg-[#25D366] text-white px-6 py-3.5 rounded-xl font-medium text-sm lg:text-base hover:bg-[#20bd5a] transition-all duration-300 shadow-sm hover:scale-[1.02]"
               >
                 Fazer Encomenda pelo WhatsApp
               </a>

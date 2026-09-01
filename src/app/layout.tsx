@@ -25,10 +25,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="pt-BR">
-      <body
-        className={`${cormorantGaramond.variable} ${outfit.variable} font-sans antialiased`}
-      >
+    <html lang="pt-BR" className={`${cormorantGaramond.variable} ${outfit.variable}`}>
+      <body className="font-sans antialiased">
         {children}
       </body>
     </html>
