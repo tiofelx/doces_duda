@@ -9,7 +9,7 @@ const products = [
     id: 1,
     name: "Bolos Caseiros",
     description: "Nossos clássicos com sabor de fazenda e afeto. Massas fofinhas e super saborosas, perfeitos para acompanhar o café da tarde em família.",
-    price: "A partir de R$ 35",
+    price: "Sob consulta",
     imagePlaceholder: "🍰 Clássico", 
     color: "bg-[var(--accent-light)]/20",
     className: "md:col-span-1 md:row-span-1 h-full",
@@ -18,7 +18,7 @@ const products = [
     id: 2,
     name: "Sobremesas",
     description: "Nossas opções geladas e irresistíveis para adoçar ainda mais os seus momentos, feitas com ingredientes selecionados.",
-    price: "A partir de R$ 15",
+    price: "Sob consulta",
     imagePlaceholder: "🤤 Geladinhos",
     color: "bg-[var(--accent)]/20",
     className: "md:col-span-1 md:row-span-1 h-full",
@@ -41,7 +41,7 @@ export default function MenuShowcase() {
         >
           <div className="max-w-xl">
             <h2 className="text-4xl md:text-5xl font-serif text-[var(--foreground)] mb-4">
-              Assinatura<br/><span className="italic text-[var(--accent)]">Duda Doces</span>
+              Assinatura<br/><span className="italic text-[var(--accent)]">Bolos da Maria</span>
             </h2>
             <p className="text-[var(--foreground)]/80 font-sans leading-relaxed">
               Cada doce é uma obra de arte pensada para encantar os olhos e o paladar. 

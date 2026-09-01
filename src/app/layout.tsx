@@ -15,8 +15,8 @@ const outfit = Outfit({
 });
 
 export const metadata: Metadata = {
-  title: "Duda Doces | Confeitaria Artesanal",
-  description: "Bolos e doces variados feitos com amor e delicadeza.",
+  title: "Bolos da Maria | Confeitaria Artesanal",
+  description: "Bolos caseiros e sobremesas feitos à mão, sob encomenda, com muito carinho.",
 };
 
 export default function RootLayout({

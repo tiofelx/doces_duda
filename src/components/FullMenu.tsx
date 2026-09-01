@@ -4,6 +4,7 @@ import { useState, useMemo } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { ShoppingBag, Plus, Minus, Send, CakeSlice } from "lucide-react";
+import { WHATSAPP } from "@/lib/site";
 
 // --- Types ---
 
@@ -24,27 +25,39 @@ type Category = {
 
 // --- Data ---
 
+// TODO(maria): preços ainda não definidos — trocar "Sob consulta" pelo valor
+// e preencher numericPrice para o carrinho somar o total.
 const menuData: Category[] = [
   {
-    id: "bolos-tradicionais",
+    id: "bolos-caseiros",
     label: "Bolos Caseiros",
     items: [
-      { id: "bt1", name: "Bolo de Chocolate", description: "Massa fofinha de cacau com uma cobertura cremosa e irresistível.", price: "R$ 45", numericPrice: 45, image: "/images/menu/bolo_de_chocolate.png" },
-      { id: "bt2", name: "Bolo de Cenoura", description: "O clássico imbatível, macio e com farta cobertura de chocolate.", price: "R$ 40", numericPrice: 40, image: "/images/menu/bolo_de_cenoura.png" },
-      { id: "bt3", name: "Bolo de Milho", description: "Sabor de fazenda, com textura macia que desmancha na boca.", price: "R$ 35", numericPrice: 35, image: "/images/menu/bolo_de_milho.png" },
-      { id: "bt4", name: "Bolo de Mandioca", description: "Cremoso, feito com mandioca fresca. Perfeito para o café da tarde.", price: "R$ 45", numericPrice: 45, image: "/images/menu/bolo_de_mandioca.png" },
-      { id: "bt5", name: "Bolo de Milho com Requeijão", description: "A combinação perfeita entre o docinho do milho e a cremosidade salgadinha do requeijão.", price: "R$ 50", numericPrice: 50, image: "/images/menu/bolo_milho_requeijao.png" },
-      { id: "bt6", name: "Bolo de Prestígio", description: "Massa escura e rica em cacau com recheio úmido de coco.", price: "R$ 55", numericPrice: 55, image: "/images/menu/bolo_prestigio.png" },
-      { id: "bt7", name: "Bolo de Maça", description: "Perfumado e reconfortante, com pedaços macios da fruta e toque de canela.", price: "R$ 40", numericPrice: 40, image: "/images/menu/bolo_maca.png" },
+      { id: "bc1", name: "Bolo de Banana Caramelizada", description: "Massa fofinha com rodelas de banana caramelizada por cima. Sabor de casa de vó.", price: "Sob consulta", image: "/images/menu/bolo_banana.jpg" },
+      { id: "bc2", name: "Bolo de Coco", description: "Molhadinho, coberto com coco ralado fresco. Perfeito para o café da tarde.", price: "Sob consulta", image: "/images/menu/bolo_coco_ralado.jpg" },
+      { id: "bc3", name: "Bolo de Coco Molhadinho", description: "Versão bem úmida, com calda que encharca a massa e coco por cima.", price: "Sob consulta", image: "/images/menu/bolo_coco_2.jpg" },
+      { id: "bc4", name: "Bolo de Laranja", description: "Perfumado, com fatias de laranja caramelizadas na cobertura.", price: "Sob consulta", image: "/images/menu/bolo_laranja.jpg" },
+      { id: "bc5", name: "Bolo Simples", description: "O clássico dourado, sem cobertura, do jeitinho que combina com café.", price: "Sob consulta", image: "/images/menu/bolo_simples.jpg" },
+      { id: "bc6", name: "Bolo de Cenoura com Chocolate", description: "Massa de cenoura macia com cobertura de chocolate e granulado.", price: "Sob consulta", image: "/images/menu/bolo_cenoura.jpg" },
     ]
   },
   {
-    id: "bolos-gelados",
-    label: "Bolos Gelados",
+    id: "bolos-chocolate",
+    label: "Bolos de Chocolate",
     items: [
-      { id: "bg1", name: "Doce de Leite c/ Coco", description: "Pedaço bem molhadinho, recheado com doce de leite suave e envolto em coco ralado.", price: "R$ 15/un", numericPrice: 15, image: "/images/menu/bolo_doce_leite_coco.png" },
-      { id: "bg2", name: "Chocolate", description: "Massa de cacau super úmida com calda rica de chocolate trufado.", price: "R$ 15/un", numericPrice: 15, image: "/images/menu/bolo_gelado_chocolate.png" },
-      { id: "bg3", name: "Morango", description: "Massa leve e refrescante com calda especial e toque de morango.", price: "R$ 18/un", numericPrice: 18, image: "/images/menu/bolo_gelado_morango.png" },
+      { id: "ch1", name: "Bolo de Chocolate com Granulado", description: "Cobertura cremosa de chocolate com granulado por cima. Sucesso garantido.", price: "Sob consulta", image: "/images/menu/bolo_chocolate_granulado.jpg" },
+      { id: "ch2", name: "Bolo de Chocolate com Gotas", description: "Ganache brilhante finalizada com gotas de chocolate ao leite.", price: "Sob consulta", image: "/images/menu/bolo_chocolate_gotas.jpg" },
+      { id: "ch3", name: "Bolo de Chocolate Recheado", description: "Massa de chocolate com recheio cremoso, calda e coco ralado.", price: "Sob consulta", image: "/images/menu/bolo_chocolate_recheado.jpg" },
+      { id: "ch4", name: "Bolo com Glacê e Gotas", description: "Glacê branco escorrendo pela lateral, coberto de gotas de chocolate.", price: "Sob consulta", image: "/images/menu/bolo_glace_gotas.jpg" },
+      { id: "ch5", name: "Bolo de Brigadeiro", description: "Alto, com brigadeiro cremoso e uma camada generosa de granulado.", price: "Sob consulta", image: "/images/menu/bolo_brigadeiro.jpg" },
+    ]
+  },
+  {
+    id: "sobremesas",
+    label: "Sobremesas",
+    items: [
+      { id: "sb1", name: "Torta de Morango", description: "Camada farta de brigadeiro coberta de granulado e morangos frescos.", price: "Sob consulta", image: "/images/menu/torta_morango.jpg" },
+      { id: "sb2", name: "Pavê de Uva", description: "Creme de chocolate gelado com uvas verdes. Leve e refrescante.", price: "Sob consulta", image: "/images/menu/pave_uva.jpg" },
+      { id: "sb3", name: "Pudim de Leite", description: "Pudim clássico, cremoso, com calda de caramelo caseira.", price: "Sob consulta", image: "/images/menu/pudim.jpg" },
     ]
   }
 ];
@@ -206,8 +219,10 @@ export default function FullMenu() {
   }, [cart]);
 
   const handleWhatsAppOrder = () => {
-    const message = `Olá! Gostaria de encomendar:\n\n${cartInfo.orderItems.map(item => `- ${item}`).join('\n')}\n\nValor estimado: R$ ${cartInfo.totalPrice}\n\nPodemos confirmar a disponibilidade?`;
-    window.open(`https://wa.me/5517991472183?text=${encodeURIComponent(message)}`, '_blank');
+    // Enquanto não houver preço cadastrado o total fica zerado; não mandar "R$ 0".
+    const valor = cartInfo.totalPrice > 0 ? `\n\nValor estimado: R$ ${cartInfo.totalPrice}` : "";
+    const message = `Olá! Gostaria de encomendar:\n\n${cartInfo.orderItems.map(item => `- ${item}`).join('\n')}${valor}\n\nPodemos confirmar a disponibilidade?`;
+    window.open(`https://wa.me/${WHATSAPP}?text=${encodeURIComponent(message)}`, '_blank');
   };
 
   return (
@@ -312,7 +327,7 @@ export default function FullMenu() {
                 </div>
                 <div className="font-serif font-bold text-lg text-[var(--foreground)] tracking-tight">
                   <span className="text-sm font-sans font-normal text-[#8A7B72] mr-2">Total</span>
-                  R$ {cartInfo.totalPrice}
+                  {cartInfo.totalPrice > 0 ? `R$ ${cartInfo.totalPrice}` : "A combinar"}
                 </div>
               </div>
               <motion.button 

@@ -94,8 +94,8 @@ export default function Hero() {
             <div className="absolute inset-0 organic-shape bg-gradient-to-tr from-[var(--accent-light)] to-[var(--accent-light)]/40 shadow-[0_20px_60px_-15px_rgba(252,192,197,0.4)] overflow-hidden flex items-center justify-center p-2">
                <div className="w-full h-full organic-shape overflow-hidden bg-[var(--surface)] relative border-4 border-white">
                   <Image 
-                    src="/images/menu/bolo_milho_requeijao.png"
-                    alt="Bolo de Milho com Requeijão artesanal em destaque"
+                    src="/images/menu/bolo_chocolate_granulado.jpg"
+                    alt="Bolo de chocolate com granulado feito à mão"
                     fill
                     sizes="(max-width: 768px) 300px, 380px"
                     className="object-cover hover:scale-105 transition-transform duration-1000"

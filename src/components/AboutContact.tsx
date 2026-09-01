@@ -3,6 +3,7 @@
 import { Heart, MapPin, Instagram, Mail } from "lucide-react";
 import { motion, Variants } from "framer-motion";
 import Image from "next/image";
+import { MARCA, INSTAGRAM, WHATSAPP, EMAIL, CIDADE } from "@/lib/site";
 
 export default function AboutContact() {
   const textVariants: Variants = {
@@ -30,11 +31,11 @@ export default function AboutContact() {
               <div className="absolute inset-0 organic-shape bg-white shadow-2xl shadow-[var(--accent-light)]/50 overflow-hidden border-8 border-white p-2 flex items-center justify-center">
                  <div className="w-full h-full organic-shape bg-[var(--accent-light)]/30 flex items-center justify-center relative overflow-hidden">
                     <Image 
-                      src="/images/duda.png"
-                      alt="Duda da Duda Doces"
+                      src="/images/maria.jpg"
+                      alt={`Maria, confeiteira da ${MARCA}`}
                       fill
                       sizes="(max-width: 768px) 320px, 400px"
-                      className="object-cover"
+                      className="object-cover object-top"
                       priority
                     />
                  </div>
@@ -46,12 +47,12 @@ export default function AboutContact() {
               whileInView={{ opacity: 1, scale: 1, rotate: 6 }}
               viewport={{ once: true }}
               transition={{ delay: 0.4, duration: 1, ease: "backOut" }}
-              className="absolute -bottom-8 -right-4 sm:bottom-10 sm:-right-10 md:right-10 w-[140px] h-[180px] sm:w-[200px] sm:h-[250px] bg-white p-2 shadow-2xl z-20 transform"
+              className="absolute -bottom-8 -right-4 sm:bottom-10 sm:-right-10 md:-right-8 md:bottom-4 w-[150px] h-[118px] sm:w-[220px] sm:h-[170px] bg-white p-2 shadow-2xl z-20 transform"
             >
                <div className="w-full h-full bg-[var(--background)] border border-[var(--accent-light)] flex items-center justify-center relative overflow-hidden">
                  <Image 
-                    src="/images/detalhe_preparo_v2.png"
-                    alt="Detalhe do preparo dos doces"
+                    src="/images/menu/bolo_glace_gotas.jpg"
+                    alt="Bolo com glacê e gotas de chocolate"
                     fill
                     sizes="200px"
                     className="object-cover"
@@ -76,17 +77,19 @@ export default function AboutContact() {
             </motion.div>
             
             <motion.h2 variants={textVariants} className="text-4xl md:text-5xl font-serif text-[var(--foreground)] mb-6">
-              Olá, eu sou a <span className="italic text-[var(--accent)]">Duda</span>
+              Olá, eu sou a <span className="italic text-[var(--accent)]">Maria</span>
             </motion.h2>
             
             <motion.p variants={textVariants} className="text-lg text-[var(--foreground)]/80 font-sans leading-relaxed mb-6">
-              A confeitaria sempre foi mais do que misturar ingredientes para mim; é a arte de celebrar a vida e o amor através do sabor. 
-              Cada bolo que sai do meu ateliê carrega um pedacinho da minha dedicação e o desejo de tornar o seu momento inesquecível.
+              Desde pequena eu sempre amei cozinhar e, de algum jeitinho, esse amor me trouxe até aqui.
+            </motion.p>
+
+            <motion.p variants={textVariants} className="text-lg text-[var(--foreground)]/80 font-sans leading-relaxed mb-6">
+              Estou começando agora, dando meus primeiros passos e aprendendo a cada dia, mas meu coração já se enche de orgulho de ver tudo isso tomando forma.
             </motion.p>
 
             <motion.p variants={textVariants} className="text-lg text-[var(--foreground)]/80 font-sans leading-relaxed mb-10">
-              Minhas criações são inteiramente artesanais, feitas sob encomenda para garantir frescor e exclusividade. 
-              Espero que meus doces tragam tanta alegria para você quanto a que sinto ao prepará-los.
+              Cada bolinho é feito com muito carinho, amor e um pouquinho de mim.
             </motion.p>
 
             {/* Contact Info */}
@@ -100,28 +103,28 @@ export default function AboutContact() {
                   <div className="w-10 h-10 shrink-0 rounded-full bg-[var(--background)] flex items-center justify-center text-[var(--foreground)]">
                     <Instagram className="w-5 h-5" />
                   </div>
-                  <a href="https://instagram.com/duda.doces" target="_blank" rel="noreferrer" className="hover:text-[var(--accent)] transition-colors">
-                    @duda.doces
+                  <a href={`https://instagram.com/${INSTAGRAM}`} target="_blank" rel="noreferrer" className="hover:text-[var(--accent)] transition-colors">
+                    @{INSTAGRAM}
                   </a>
                 </li>
                 <li className="flex items-center gap-4 text-[var(--foreground)]/80">
                   <div className="w-10 h-10 shrink-0 rounded-full bg-[var(--background)] flex items-center justify-center text-[var(--foreground)]">
                     <MapPin className="w-5 h-5" />
                   </div>
-                  <span>Ateliê em São Paulo, SP<br/><span className="text-sm opacity-80">(Apenas Retiradas/Entregas)</span></span>
+                  <span>Ateliê em {CIDADE}<br/><span className="text-sm opacity-80">(Apenas Retiradas/Entregas)</span></span>
                 </li>
                 <li className="flex items-center gap-4 text-[var(--foreground)]/80">
                   <div className="w-10 h-10 shrink-0 rounded-full bg-[var(--background)] flex items-center justify-center text-[var(--foreground)]">
                     <Mail className="w-5 h-5" />
                   </div>
-                  <a href="mailto:contato@dudadoces.com.br" className="hover:text-[var(--accent)] transition-colors break-all">
-                    contato@dudadoces.com.br
+                  <a href={`mailto:${EMAIL}`} className="hover:text-[var(--accent)] transition-colors break-all">
+                    {EMAIL}
                   </a>
                 </li>
               </ul>
 
               <a 
-                href="https://wa.me/5517991472183" 
+                href={`https://wa.me/${WHATSAPP}`} 
                 target="_blank" 
                 rel="noreferrer"
                 className="mt-2 w-full flex items-center justify-center gap-2 bg-[#25D366] text-white px-8 py-4 rounded-xl font-medium hover:bg-[#20bd5a] transition-all duration-300 shadow-sm hover:scale-[1.02]"

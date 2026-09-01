@@ -15,7 +15,7 @@ export default function CardapioPage() {
           Voltar para Home
         </Link>
         <div className="font-serif italic text-lg text-[var(--foreground)]">
-          Duda Doces
+          Bolos da Maria
         </div>
       </header>
 
@@ -25,7 +25,7 @@ export default function CardapioPage() {
       </div>
 
       <footer className="py-8 text-center text-[#A69B95] text-sm bg-white border-t border-[#F5F0EE] mt-auto">
-        <p>© {new Date().getFullYear()} Duda Doces — Confeitaria Artesanal.</p>
+        <p>© {new Date().getFullYear()} Bolos da Maria — Confeitaria Artesanal.</p>
       </footer>
     </main>
   );
